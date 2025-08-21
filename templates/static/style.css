@@ -1,11 +1,41 @@
 body {
     background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
 }
 
 .container {
     max-width: 1200px;
 }
 
-.card {
+.event-card {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-primary {
+    background-color: #003087;
+    /* Wits blue */
+    border-color: #003087;
+}
+
+.btn-primary:hover {
+    background-color: #002060;
+    border-color: #002060;
+}
+
+.badge {
+    font-size: 0.9em;
+}
+
+h1 {
+    color: #003087;
+    /* Wits blue */
+}
+
+.form-label {
+    color: #333;
 }

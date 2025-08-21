@@ -11,36 +11,66 @@
 
 <body>
     <div class="container">
-        <h1 class="my-4">Add New Event</h1>
+        <h1 class="my-4 text-primary">Add New Event</h1>
         <form method="POST">
             <div class="mb-3">
-                <label for="title" class="form-label">Event Title</label>
+                <label for="title" class="form-label fw-bold">Event Title</label>
                 <input type="text" class="form-control" id="title" name="title" required>
             </div>
             <div class="mb-3">
-                <label for="date" class="form-label">Date (YYYY-MM-DD)</label>
+                <label for="date" class="form-label fw-bold">Date (YYYY-MM-DD)</label>
                 <input type="text" class="form-control" id="date" name="date" placeholder="2025-08-25" required>
             </div>
             <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
+                <label for="location" class="form-label fw-bold">Location</label>
                 <input type="text" class="form-control" id="location" name="location" required>
             </div>
             <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
+                <label for="category" class="form-label fw-bold">Category</label>
                 <select class="form-control" id="category" name="category" required>
                     <option value="Tech">Tech</option>
                     <option value="Career">Career</option>
                     <option value="Social">Social</option>
+                    <option value="Academic">Academic</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Sports">Sports</option>
                 </select>
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
+                <label for="price_type" class="form-label fw-bold">Price Type</label>
+                <select class="form-control" id="price_type" name="price_type" onchange="togglePriceField()" required>
+                    <option value="Free">Free</option>
+                    <option value="Paid">Paid</option>
+                </select>
+            </div>
+            <div class="mb-3" id="price_value_field" style="display: none;">
+                <label for="price_value" class="form-label fw-bold">Price (R)</label>
+                <input type="number" class="form-control" id="price_value" name="price_value" placeholder="100">
+            </div>
+            <div class="mb-3">
+                <label for="ticket_types" class="form-label fw-bold">Ticket Types (select all that apply)</label>
+                <select class="form-control" id="ticket_types" name="ticket_types" multiple>
+                    <option value="Early Bird">Early Bird</option>
+                    <option value="General">General</option>
+                    <option value="VIP">VIP</option>
+                    <option value="VVIP">VVIP</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label fw-bold">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
+    <script>
+        function togglePriceField() {
+            var priceType = document.getElementById('price_type').value;
+            var priceField = document.getElementById('price_value_field');
+            priceField.style.display = priceType === 'Paid' ? 'block' : 'none';
+        }
+    </script>
 </body>
 
 </html>
